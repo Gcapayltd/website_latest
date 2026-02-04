@@ -87,7 +87,7 @@ export function CollectionPage() {
     {
       icon: Hash,
       name: 'PUSH USSD',
-      description: 'Enable customers to pay directly from their phones using USSD prompts. No internet required.',
+      description: 'Enable customers to pay directly from their phones using USSD prompts. ',
       features: ['Works without internet', 'Familiar to all users', 'Instant confirmation'],
       priority: true,
     },
