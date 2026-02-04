@@ -85,16 +85,17 @@ export function CollectionPage() {
 
   const paymentTools = [
     {
-      icon: Link2,
-      name: 'Checkout Links',
-      description: 'Generate unique payment links for your e-commerce, membership apps, ticketing systems, or any software product.',
-      features: ['One link, unlimited payments', 'Real-time transaction alerts', 'Perfect for online stores'],
-    },
-    {
       icon: Hash,
       name: 'PUSH USSD',
       description: 'Enable customers to pay directly from their phones using USSD prompts. No internet required.',
       features: ['Works without internet', 'Familiar to all users', 'Instant confirmation'],
+      priority: true,
+    },
+    {
+      icon: Link2,
+      name: 'Checkout Links',
+      description: 'Generate unique payment links for your e-commerce, membership apps, ticketing systems, or any software product.',
+      features: ['One link, unlimited payments', 'Real-time transaction alerts', 'Perfect for online stores'],
     },
     {
       icon: Code2,
@@ -278,12 +279,29 @@ export function CollectionPage() {
           {paymentTools.map((tool, index) => (
             <div 
               key={index}
-              className="group relative bg-[#141419] border border-[#2a2a30] rounded-2xl p-6 hover:border-[#C9A45C]/30 transition-all duration-300 hover:-translate-y-1"
+              className={`group relative rounded-2xl p-6 transition-all duration-300 hover:-translate-y-1 ${
+                tool.priority 
+                  ? 'bg-gradient-to-br from-[#1a1a20] to-[#141419] border-2 border-[#C9A45C]/40 hover:border-[#C9A45C]/60' 
+                  : 'bg-[#141419] border border-[#2a2a30] hover:border-[#C9A45C]/30'
+              }`}
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#C9A45C]/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity" />
+              {tool.priority && (
+                <span className="absolute -top-3 left-4 px-3 py-1 bg-[#C9A45C] text-[#0B0B0D] text-xs font-semibold rounded-full">
+                  Recommended
+                </span>
+              )}
+              <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br rounded-bl-full transition-opacity ${
+                tool.priority 
+                  ? 'from-[#C9A45C]/10 to-transparent opacity-100' 
+                  : 'from-[#C9A45C]/5 to-transparent opacity-0 group-hover:opacity-100'
+              }`} />
               
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#C9A45C]/20 to-[#C9A45C]/5 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                <tool.icon className="w-6 h-6 text-[#C9A45C]" />
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform ${
+                tool.priority 
+                  ? 'bg-gradient-to-br from-[#C9A45C] to-[#A8843D] shadow-lg shadow-[#C9A45C]/20' 
+                  : 'bg-gradient-to-br from-[#C9A45C]/20 to-[#C9A45C]/5'
+              }`}>
+                <tool.icon className={`w-6 h-6 ${tool.priority ? 'text-[#0B0B0D]' : 'text-[#C9A45C]'}`} />
               </div>
               
               <h3 className="text-lg font-bold text-[#F4F1EC] mb-2">{tool.name}</h3>
