@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SlideText } from '@/components/SlideText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -59,13 +60,13 @@ export function CTASection() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a href="https://merchant.gca-pay.com/auth?mode=register" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#0B0B0D] hover:bg-[#1a1a20] text-white font-semibold px-8 py-4 rounded-full text-base h-auto">
-                  Create free account
+                <Button className="bg-[#0B0B0D] hover:bg-[#1a1a20] text-white font-semibold px-8 py-4 rounded-full text-base h-auto slide-trigger">
+                  <SlideText>Create free account</SlideText>
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </a>
-              <Button variant="outline" className="border-2 border-[#0B0B0D] text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white px-8 py-4 rounded-full text-base h-auto bg-transparent">
-                Contact sales
+              <Button variant="outline" className="border-2 border-[#0B0B0D] text-[#0B0B0D] hover:bg-[#0B0B0D] hover:text-white px-8 py-4 rounded-full text-base h-auto bg-transparent slide-trigger">
+                <SlideText>Contact sales</SlideText>
               </Button>
             </div>
           </div>

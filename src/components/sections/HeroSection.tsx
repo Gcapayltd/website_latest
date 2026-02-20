@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SlideText } from '@/components/SlideText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,6 +16,12 @@ const rotatingPhrases = [
   'grow business',
 ];
 
+const CARD_WORDS = ['Integrate', 'Collect', 'Transfer'];
+const TYPE_SPEED = 85;   // ms per character typed
+const DELETE_SPEED = 45; // ms per character deleted
+const HOLD_DELAY = 900;  // ms to hold the completed word
+const NEXT_DELAY = 260;  // ms pause after fully deleted before next word
+
 // Hero Section with Expanding Card
 export function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -26,6 +33,39 @@ export function HeroSection() {
   const cardTextRef = useRef<HTMLDivElement>(null);
   const rotatingTextRef = useRef<HTMLSpanElement>(null);
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
+
+  // ── Typing animation for card words ──────────────────────
+  const [activeWordIdx, setActiveWordIdx] = useState(0);
+  const [typedCount, setTypedCount] = useState(0);
+  const [phase, setPhase] = useState<'typing' | 'holding' | 'deleting' | 'next'>('typing');
+
+  useEffect(() => {
+    const word = CARD_WORDS[activeWordIdx];
+    let timer: ReturnType<typeof setTimeout>;
+
+    if (phase === 'typing') {
+      if (typedCount < word.length) {
+        timer = setTimeout(() => setTypedCount(c => c + 1), TYPE_SPEED);
+      } else {
+        timer = setTimeout(() => setPhase('holding'), HOLD_DELAY);
+      }
+    } else if (phase === 'holding') {
+      timer = setTimeout(() => setPhase('deleting'), HOLD_DELAY);
+    } else if (phase === 'deleting') {
+      if (typedCount > 0) {
+        timer = setTimeout(() => setTypedCount(c => c - 1), DELETE_SPEED);
+      } else {
+        timer = setTimeout(() => setPhase('next'), NEXT_DELAY);
+      }
+    } else if (phase === 'next') {
+      setActiveWordIdx(i => (i + 1) % CARD_WORDS.length);
+      setTypedCount(0);
+      setPhase('typing');
+    }
+
+    return () => clearTimeout(timer);
+  }, [phase, typedCount, activeWordIdx]);
+  // ─────────────────────────────────────────────────────────
 
   // Rotating text animation
   useEffect(() => {
@@ -189,14 +229,14 @@ export function HeroSection() {
             {/* CTAs */}
             <div ref={ctaRef} className="flex items-center gap-4">
               <a href="https://merchant.gca-pay.com/auth?mode=register" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-8 py-4 rounded-full text-base">
-                  Get started
+                <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-8 py-4 rounded-full text-base slide-trigger">
+                  <SlideText>Get started</SlideText>
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </a>
               <a href="https://docs.gca-pay.com" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="border-[#F4F1EC]/30 text-[#F4F1EC] hover:bg-[#F4F1EC]/10 px-6 py-4 rounded-full text-base backdrop-blur-sm">
-                  Documentation
+                <Button variant="outline" className="border-[#F4F1EC]/30 text-[#F4F1EC] hover:bg-[#F4F1EC]/10 px-6 py-4 rounded-full text-base backdrop-blur-sm slide-trigger">
+                  <SlideText>Documentation</SlideText>
                 </Button>
               </a>
             </div>
@@ -212,30 +252,31 @@ export function HeroSection() {
               <div className="absolute top-0 left-0 w-16 h-16 border-t-2 border-l-2 border-[#C9A45C]/60 rounded-tl-[32px]" />
               <div className="absolute bottom-0 right-0 w-16 h-16 border-b-2 border-r-2 border-[#C9A45C]/60 rounded-br-[32px]" />
               
-              {/* Card Content - Animated Text */}
+              {/* Card Content - Typing Animation */}
               <div 
                 ref={cardTextRef}
                 className="relative h-full flex flex-col items-start justify-center p-8 lg:p-10"
               >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-[#C9A45C]" />
-                    <span className="text-xl lg:text-2xl font-light text-white/90 tracking-wide">
-                      Integrate
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-white/40" />
-                    <span className="text-xl lg:text-2xl font-light text-white/60 tracking-wide">
-                      Collect
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-2 h-2 rounded-full bg-white/40" />
-                    <span className="text-xl lg:text-2xl font-light text-white/60 tracking-wide">
-                      Transfer
-                    </span>
-                  </div>
+                <div className="space-y-5">
+                  {CARD_WORDS.map((word, i) => {
+                    const isActive = i === activeWordIdx;
+                    const displayed = isActive ? word.slice(0, typedCount) : word;
+                    return (
+                      <div key={word} className="flex items-center gap-3">
+                        <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                          isActive ? 'bg-[#C9A45C]' : 'bg-white/25'
+                        }`} />
+                        <span className={`text-xl lg:text-2xl font-light tracking-wide transition-colors duration-300 ${
+                          isActive ? 'text-white/90' : 'text-white/30'
+                        }`}>
+                          {displayed}
+                          {isActive && (
+                            <span className="inline-block w-[2px] h-[1.1em] bg-[#C9A45C] ml-[2px] align-middle animate-blink" />
+                          )}
+                        </span>
+                      </div>
+                    );
+                  })}
                 </div>
                 
                 {/* Decorative line */}

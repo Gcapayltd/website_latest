@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Code, Shield, Zap, Clock, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SlideText } from '@/components/SlideText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -106,14 +107,14 @@ export function DeveloperSection() {
 
             <div className="flex items-center gap-4">
               <a href="https://docs.gca-pay.com" target="_blank" rel="noopener noreferrer">
-                <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-6 py-3 rounded-xl">
-                  Read the docs
+                <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-6 py-3 rounded-xl slide-trigger">
+                  <SlideText>Read the docs</SlideText>
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </a>
               <a href="https://merchant.gca-pay.com/auth?mode=register" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline" className="border-[#F4F1EC]/20 text-[#F4F1EC] hover:bg-[#F4F1EC]/10 px-6 py-3 rounded-xl">
-                  Get Started
+                <Button variant="outline" className="border-[#F4F1EC]/20 text-[#F4F1EC] hover:bg-[#F4F1EC]/10 px-6 py-3 rounded-xl slide-trigger">
+                  <SlideText>Get Started</SlideText>
                 </Button>
               </a>
             </div>

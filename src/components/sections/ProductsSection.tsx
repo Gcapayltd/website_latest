@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, BarChart3, Wallet, Send } from 'lucide-react';
+import { SlideText } from '@/components/SlideText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -180,17 +181,17 @@ export function ProductsSection() {
                   href={product.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-[#C9A45C] font-semibold hover:text-[#F4F1EC] transition-colors group/link"
+                  className="inline-flex items-center text-[#C9A45C] font-semibold hover:text-[#F4F1EC] transition-colors group/link slide-trigger"
                 >
-                  {product.cta}
+                  <SlideText>{product.cta}</SlideText>
                   <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                 </a>
               ) : (
                 <a 
                   href={product.link}
-                  className="inline-flex items-center text-[#C9A45C] font-semibold hover:text-[#F4F1EC] transition-colors group/link"
+                  className="inline-flex items-center text-[#C9A45C] font-semibold hover:text-[#F4F1EC] transition-colors group/link slide-trigger"
                 >
-                  {product.cta}
+                  <SlideText>{product.cta}</SlideText>
                   <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
                 </a>
               )}

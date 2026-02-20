@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Newspaper, ArrowRight } from 'lucide-react';
+import { SlideText } from '@/components/SlideText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -62,9 +63,9 @@ export function InsightsSection() {
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 px-7 py-3 bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold rounded-xl transition-colors group"
+              className="inline-flex items-center gap-2 px-7 py-3 bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold rounded-xl transition-colors group slide-trigger"
             >
-              Browse Articles
+              <SlideText>Browse Articles</SlideText>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
             </Link>
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#141419] border border-[#2a2a30] rounded-full text-[#A9A6B0]">

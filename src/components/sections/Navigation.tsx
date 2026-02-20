@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SlideText } from '@/components/SlideText';
 
 // Navigation Component
 export function Navigation() {
@@ -48,14 +49,12 @@ export function Navigation() {
 
   // Nav link component with underline hover effect
   const NavLink = ({ href, to, children, external = false }: { href?: string; to?: string; children: React.ReactNode; external?: boolean }) => {
-    const baseClasses = "relative text-sm text-[#A9A6B0] hover:text-[#F4F1EC] transition-colors group";
-    const underline = <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#C9A45C] group-hover:w-full transition-all duration-300" />;
+    const baseClasses = "text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger";
     
     if (external && href) {
       return (
         <a href={href} target="_blank" rel="noopener noreferrer" className={baseClasses}>
-          {children}
-          {underline}
+          <SlideText>{children}</SlideText>
         </a>
       );
     }
@@ -63,8 +62,7 @@ export function Navigation() {
     if (href) {
       return (
         <a href={href} className={baseClasses}>
-          {children}
-          {underline}
+          <SlideText>{children}</SlideText>
         </a>
       );
     }
@@ -72,8 +70,7 @@ export function Navigation() {
     if (to) {
       return (
         <Link to={to} className={baseClasses}>
-          {children}
-          {underline}
+          <SlideText>{children}</SlideText>
         </Link>
       );
     }
@@ -151,12 +148,12 @@ export function Navigation() {
         </div>
         
         <div className="flex items-center gap-4">
-          <a href="https://merchant.gca-pay.com/auth?mode=login" className="text-sm text-[#A9A6B0] hover:text-[#F4F1EC] transition-colors hidden sm:block">
-            Sign in
+          <a href="https://merchant.gca-pay.com/auth?mode=login" className="text-sm text-[#A9A6B0] hover:text-[#F4F1EC] transition-colors hidden sm:block slide-trigger">
+            <SlideText>Sign in</SlideText>
           </a>
           <a href="https://merchant.gca-pay.com/auth?mode=register" target="_blank" rel="noopener noreferrer" className="hidden sm:block">
-            <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold text-sm px-5 py-2 rounded-xl">
-              Get started
+            <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold text-sm px-5 py-2 rounded-xl slide-trigger">
+              <SlideText>Get started</SlideText>
             </Button>
           </a>
           

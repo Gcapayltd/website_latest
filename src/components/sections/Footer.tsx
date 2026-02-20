@@ -1,6 +1,7 @@
 import { Globe, MapPin, Phone, Mail, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { SlideText } from '@/components/SlideText';
 
 // Footer
 export function Footer() {
@@ -29,8 +30,8 @@ export function Footer() {
                 placeholder="Enter your email"
                 className="flex-1 px-4 py-3 bg-[#141419] border border-[#2a2a30] rounded-xl text-[#F4F1EC] placeholder:text-[#A9A6B0]/50 focus:outline-none focus:border-[#C9A45C]/50 transition-colors"
               />
-              <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-6 py-3 rounded-xl h-auto">
-                Subscribe
+              <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-6 py-3 rounded-xl h-auto slide-trigger">
+                <SlideText>Subscribe</SlideText>
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </form>
@@ -63,9 +64,9 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-[#F4F1EC] mb-4">Products</h4>
             <ul className="space-y-3">
-              <li><Link to="/collection" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Collection API</Link></li>
-              <li><Link to="/disbursement" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Disbursement API</Link></li>
-              <li><Link to="/rates" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Exchange Rates</Link></li>
+              <li><Link to="/collection" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Collection API</SlideText></Link></li>
+              <li><Link to="/disbursement" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Disbursement API</SlideText></Link></li>
+              <li><Link to="/rates" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Exchange Rates</SlideText></Link></li>
             </ul>
           </div>
 
@@ -73,8 +74,8 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-[#F4F1EC] mb-4">Developers</h4>
             <ul className="space-y-3">
-              <li><a href="https://docs.gca-pay.com" target="_blank" rel="noopener noreferrer" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Documentation</a></li>
-              <li><a href="https://merchant.gca-pay.com/auth?mode=register" target="_blank" rel="noopener noreferrer" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Get API Keys</a></li>
+              <li><a href="https://docs.gca-pay.com" target="_blank" rel="noopener noreferrer" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Documentation</SlideText></a></li>
+              <li><a href="https://merchant.gca-pay.com/auth?mode=register" target="_blank" rel="noopener noreferrer" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Get API Keys</SlideText></a></li>
             </ul>
           </div>
 
@@ -82,8 +83,8 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold text-[#F4F1EC] mb-4">Company</h4>
             <ul className="space-y-3">
-              <li><Link to="/careers" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Careers</Link></li>
-              <li><Link to="/contact" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors">Contact</Link></li>
+              <li><Link to="/careers" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Careers</SlideText></Link></li>
+              <li><Link to="/contact" className="text-sm text-[#A9A6B0] hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Contact</SlideText></Link></li>
             </ul>
           </div>
 
@@ -113,8 +114,8 @@ export function Footer() {
             © 2026 GCA Pay. All rights reserved.
           </div>
           <div className="flex items-center gap-6 text-sm text-[#A9A6B0]">
-            <Link to="/privacy" className="hover:text-[#C9A45C] transition-colors">Privacy</Link>
-            <Link to="/terms" className="hover:text-[#C9A45C] transition-colors">Terms</Link>
+            <Link to="/privacy" className="hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Privacy</SlideText></Link>
+            <Link to="/terms" className="hover:text-[#C9A45C] transition-colors slide-trigger"><SlideText>Terms</SlideText></Link>
             <span className="flex items-center gap-2">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
               All systems operational

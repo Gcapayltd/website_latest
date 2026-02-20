@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { SlideText } from '@/components/SlideText';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,8 +128,8 @@ export function AboutSection() {
               ))}
             </div>
 
-            <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-8 py-4 rounded-full text-base">
-              Learn more about us
+            <Button className="bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold px-8 py-4 rounded-full text-base slide-trigger">
+              <SlideText>Learn more about us</SlideText>
               <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
