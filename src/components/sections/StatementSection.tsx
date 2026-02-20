@@ -123,6 +123,7 @@ export function StatementSection({ headline, subheadline, image, zIndex, entranc
       style={{ zIndex }}
     >
       {/* Background Image */}
+      <div className="dirt-grain" style={{ zIndex: 2 }} />
       <div 
         ref={bgRef}
         className="absolute inset-0"

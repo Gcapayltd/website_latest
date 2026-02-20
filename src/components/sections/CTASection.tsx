@@ -38,6 +38,7 @@ export function CTASection() {
 
   return (
     <section ref={sectionRef} className="relative w-full py-24 lg:py-32 bg-[#0B0B0D] z-50">
+      <div className="dirt-grain" />
       <div className="px-6 lg:px-[8vw]">
         <div 
           ref={contentRef}

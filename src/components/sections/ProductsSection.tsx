@@ -114,6 +114,7 @@ export function ProductsSection() {
       id="products"
       className="relative w-full pt-32 pb-24 lg:pt-40 lg:pb-32 bg-[#0B0B0D] overflow-hidden z-20 -mt-20"
     >
+      <div className="dirt-grain" />
       {/* Animated Background Text */}
       <div className="absolute inset-0 flex items-center overflow-hidden pointer-events-none select-none">
         <div className="animate-marquee whitespace-nowrap flex">

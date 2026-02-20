@@ -145,6 +145,7 @@ export function HeroSection() {
 
   return (
     <section ref={sectionRef} className="relative w-full h-screen overflow-hidden z-10 bg-[#0B0B0D]">
+      <div className="dirt-grain" />
       {/* Background Image */}
       <div 
         ref={bgRef}

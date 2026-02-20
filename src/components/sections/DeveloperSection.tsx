@@ -58,6 +58,7 @@ export function DeveloperSection() {
       id="docs"
       className="relative w-full py-24 lg:py-32 bg-gradient-to-br from-[#0f1419] via-[#0B0B0D] to-[#141820] z-50 overflow-hidden"
     >
+      <div className="dirt-grain" />
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#C9A45C]/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />

@@ -10,6 +10,8 @@ import { ContactPage } from './pages/ContactPage'
 import { PrivacyPage } from './pages/PrivacyPage'
 import { TermsPage } from './pages/TermsPage'
 import { CareersPage } from './pages/CareersPage'
+import { BlogPage } from './pages/BlogPage'
+import { BlogDetailPage } from './pages/BlogDetailPage'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -23,6 +25,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path="/privacy" element={<PrivacyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/careers" element={<CareersPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogDetailPage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

@@ -1,7 +1,8 @@
 import { useRef, useLayoutEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Newspaper } from 'lucide-react';
+import { Newspaper, ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +40,7 @@ export function InsightsSection() {
       id="insights"
       className="relative w-full py-24 lg:py-32 bg-[#0B0B0D] z-50"
     >
+      <div className="dirt-grain" />
       <div className="px-6 lg:px-[8vw]">
         <div ref={contentRef} className="max-w-2xl mx-auto text-center">
           <span className="inline-block px-4 py-2 bg-[#C9A45C]/10 border border-[#C9A45C]/30 rounded-full text-sm text-[#C9A45C] mb-6">
@@ -54,12 +56,21 @@ export function InsightsSection() {
           </h2>
           
           <p className="text-xl text-[#A9A6B0] leading-relaxed">
-            Check back later for the latest news, product updates, and insights from the GCA Pay team.
+            The latest news, product updates, and expert perspectives from the GCA Pay team.
           </p>
           
-          <div className="mt-8 inline-flex items-center gap-2 px-6 py-3 bg-[#141419] border border-[#2a2a30] rounded-full text-[#A9A6B0]">
-            <div className="w-2 h-2 bg-[#C9A45C] rounded-full animate-pulse" />
-            <span className="text-sm">Coming soon</span>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 px-7 py-3 bg-[#C9A45C] hover:bg-[#A8843D] text-[#0B0B0D] font-semibold rounded-xl transition-colors group"
+            >
+              Browse Articles
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+            </Link>
+            <div className="inline-flex items-center gap-2 px-6 py-3 bg-[#141419] border border-[#2a2a30] rounded-full text-[#A9A6B0]">
+              <div className="w-2 h-2 bg-[#C9A45C] rounded-full animate-pulse" />
+              <span className="text-sm">New articles regularly</span>
+            </div>
           </div>
         </div>
       </div>

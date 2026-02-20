@@ -145,6 +145,7 @@ export function Navigation() {
               <NavLink href="https://docs.gca-pay.com" external>Developers</NavLink>
             </>
           )}
+          <NavLink to="/blog">Blog & Publications</NavLink>
           <NavLink to="/rates">Rates</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </div>
@@ -251,6 +252,14 @@ export function Navigation() {
           >
             Developers
           </a>
+          
+          <Link 
+            to="/blog" 
+            className="block py-3 text-[#A9A6B0] hover:text-[#F4F1EC] transition-colors border-b border-[#2a2a30]"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            Blog & Publications
+          </Link>
           
           <Link 
             to="/rates" 

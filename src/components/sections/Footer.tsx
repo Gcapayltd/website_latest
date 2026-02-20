@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 export function Footer() {
   return (
     <footer className="relative w-full py-16 bg-[#0B0B0D] border-t border-[#1a1a20] z-50 overflow-hidden">
+      <div className="dirt-grain" />
       {/* Animated Background Text */}
       <div className="absolute inset-0 flex items-center overflow-hidden pointer-events-none select-none opacity-50">
         <div className="animate-marquee whitespace-nowrap flex">
